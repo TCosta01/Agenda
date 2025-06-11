@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), OnDateSelectedListener {
     private lateinit var calendarView: MaterialCalendarView
     private lateinit var selectedDatesTextView: TextView
     private lateinit var doneButton: Button
+    private lateinit var btnPesquisa: Button
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var currentMonthYearTextView: TextView // Novo TextView para Mês/Ano
 
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity(), OnDateSelectedListener {
         calendarView = findViewById(R.id.calendarView)
         selectedDatesTextView = findViewById(R.id.selectedDatesTextView)
         doneButton = findViewById(R.id.doneButton)
+        btnPesquisa = findViewById(R.id.btnPesquisa)
         databaseHelper = DatabaseHelper(this)
         currentMonthYearTextView = findViewById(R.id.currentMonthYearTextView) // Inicializa o TextView
 
@@ -58,6 +60,9 @@ class MainActivity : AppCompatActivity(), OnDateSelectedListener {
 
         doneButton.setOnClickListener {
             handleDoneButtonClick()
+        }
+        btnPesquisa.setOnClickListener {
+            startActivity(Intent(this, ListaDados::class.java))
         }
     }
 

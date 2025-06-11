@@ -300,4 +300,84 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return rowsAffected
     }
 
+
+
+
+
+    fun utilizadorListSelectAll(): ArrayList<Utilizador> {
+
+        /*
+        const val COLUMN_ID = "_id" // Adicionando uma coluna ID para facilitar updates/deletes
+        const val COLUMN_DIA = "dia"
+        const val COLUMN_MES = "mes"
+        const val COLUMN_ANO = "ano"
+        const val COLUMN_NOME = "nome"
+        const val COLUMN_NUMERO = "numero"
+        const val COLUMN_ENDERECO = "endereco"
+        const val COLUMN_DESCRICAO = "descricao"
+        const val COLUMN_VALOR = "valor" // Continua sendo a coluna
+        const val COLUMN_BOOKING_GROUP_ID = "booking_group_id" // Adicione esta coluna para agrupar reservas
+
+         */
+
+
+        val db = this.readableDatabase
+
+        val c = db.rawQuery("SELECT * FROM Reservas", null)
+
+
+
+        val listaUtilizador: ArrayList<Utilizador> = ArrayList()
+        if (c.count > 0) {
+            c.moveToFirst()
+            do {
+                val idIndex = c.getColumnIndex("_id")
+
+
+                val diaIndex = c.getColumnIndex("dia")
+                val mesIndex = c.getColumnIndex("mes")
+                val anoIndex = c.getColumnIndex("ano")
+                val nomeIndex = c.getColumnIndex("nome")
+                val numeroIndex = c.getColumnIndex("numero")
+                val enderecoIndex = c.getColumnIndex("endereco")
+                val descricaoIndex = c.getColumnIndex("descricao")
+                val valorIndex = c.getColumnIndex("valor")
+                val booking_group_idIndex = c.getColumnIndex("booking_group_id")
+
+                /*
+                         ("CREATE TABLE " + TABLE_RESERVAS + "("
+                                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," // Adicionando COLUMN_ID
+                                + COLUMN_DIA + " INTEGER,"
+                                + COLUMN_MES + " INTEGER,"
+                                + COLUMN_ANO + " INTEGER,"
+                                + COLUMN_NOME + " TEXT,"
+                                + COLUMN_NUMERO + " TEXT,"
+                                + COLUMN_ENDERECO + " TEXT,"
+                                + COLUMN_DESCRICAO + " TEXT,"
+                                + COLUMN_VALOR + " TEXT," // MUDANÇA AQUI: Agora é TEXT para String
+                                + COLUMN_BOOKING_GROUP_ID + " TEXT" // Adicionando COLUMN_BOOKING_GROUP_ID
+                                + ")") */
+                val id = c.getInt(idIndex)
+                val nome = c.getString(nomeIndex)
+                val numero = c.getString(numeroIndex)
+                val endereco = c.getString(enderecoIndex)
+                val descricao = c.getString(descricaoIndex)
+                val valor = c.getString(valorIndex)
+                val ano = c.getInt(anoIndex)
+                val mes = c.getInt(mesIndex)
+                val dia = c.getInt(diaIndex)
+                val booking_group_id = c.getString(booking_group_idIndex)
+
+
+
+                listaUtilizador.add(Utilizador(id, booking_group_id, nome, numero, endereco, descricao, valor, ano, mes, dia))
+
+            } while (c.moveToNext())
+        }
+        db.close()
+        return listaUtilizador
+
+
+    }
+
 }
