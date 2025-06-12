@@ -8,6 +8,10 @@ class Utilizador(
 
     override fun toString(): String {
       //  return "Evento(id=$id, cliente='$nome', data='$ano $mes $dia', numero = '$numero', endereco = '$endereco' descricao = '$descricao', valor = '$valor')"
-        return "Evento(ids=$id e booking_group_id = $booking_group_id, nome='$nome', data='$ano $mes $dia', numero = '$numero', endereco = '$endereco' descricao = '$descricao', valor = '$valor')"
+        // return "Evento(ids=$id e booking_group_id = $booking_group_id, nome='$nome', data='$ano $mes $dia', numero = '$numero', endereco = '$endereco' descricao = '$descricao', valor = '$valor')"
+
+        val quebraDeLinha = System.lineSeparator()
+        return "Data:${dia}/${mes}/${ano} ${quebraDeLinha} Nome: ${nome} - Numero: ${numero}"
+
     }
 }

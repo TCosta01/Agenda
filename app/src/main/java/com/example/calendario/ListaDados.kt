@@ -73,6 +73,25 @@ class ListaDados : AppCompatActivity() {
             startActivity(i)
         }
 
+        binding.buttonBuscar.setOnClickListener {
+
+            var palavra = binding.editPalavraChave.text.toString()
+            var anoP = binding.editAno.text.toString()
+            var mesP = binding.editMes.text.toString()
+
+
+
+            val especificolistaUtilizadores = db.especificoUtilizadorListSelectAll(palavra, anoP, mesP)
+            db.especificoUtilizadorListSelectAll(palavra, anoP, mesP)
+
+
+            adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, especificolistaUtilizadores)
+            binding.listView.adapter = adapter
+
+
+            adapter.notifyDataSetChanged()
+        }
+
 
     }
 }

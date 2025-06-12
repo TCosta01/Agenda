@@ -323,7 +323,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
         val db = this.readableDatabase
 
-        val c = db.rawQuery("SELECT * FROM Reservas", null)
+        val c = db.rawQuery("SELECT * FROM Reservas ORDER BY ano ASC, mes ASC, dia ASC", null)
 
 
 
@@ -357,6 +357,68 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                                 + COLUMN_VALOR + " TEXT," // MUDANÇA AQUI: Agora é TEXT para String
                                 + COLUMN_BOOKING_GROUP_ID + " TEXT" // Adicionando COLUMN_BOOKING_GROUP_ID
                                 + ")") */
+                val id = c.getInt(idIndex)
+                val nome = c.getString(nomeIndex)
+                val numero = c.getString(numeroIndex)
+                val endereco = c.getString(enderecoIndex)
+                val descricao = c.getString(descricaoIndex)
+                val valor = c.getString(valorIndex)
+                val ano = c.getInt(anoIndex)
+                val mes = c.getInt(mesIndex)
+                val dia = c.getInt(diaIndex)
+                val booking_group_id = c.getString(booking_group_idIndex)
+
+
+
+                listaUtilizador.add(Utilizador(id, booking_group_id, nome, numero, endereco, descricao, valor, ano, mes, dia))
+
+            } while (c.moveToNext())
+        }
+        db.close()
+        return listaUtilizador
+
+
+    }
+
+    fun especificoUtilizadorListSelectAll(palavra: String, ano: String, mes: String): ArrayList<Utilizador> {
+
+        val db = this.readableDatabase
+
+        val c = db.rawQuery("SELECT * FROM Reservas WHERE CONCAT(nome, numero, endereco, descricao, valor) LIKE '%${palavra}%' COLLATE NOCASE AND ano LIKE '%${ano}%' AND mes LIKE '%${mes}%' ORDER BY ano ASC, mes ASC, dia ASC;" , null)
+        // val c = db.rawQuery("SELECT * FROM Reservas", null)
+
+
+/*
+        if ((ano.equals("") == null) && (mes.equals("") == null)) {
+            val c = db.rawQuery("SELECT * FROM Reservas WHERE CONCAT(titulo, ' ', descricao) LIKE '%${palavra}%' ORDER BY ano ASC, mes ASC, dia ASC;" , null)
+        } else{
+            val c = db.rawQuery("SELECT * FROM Reservas WHERE ano = ?" , arrayOf(ano))
+        }
+
+
+ */
+
+
+
+
+        val listaUtilizador: ArrayList<Utilizador> = ArrayList()
+        if (c.count > 0) {
+            c.moveToFirst()
+            do {
+                val idIndex = c.getColumnIndex("_id")
+
+
+                val diaIndex = c.getColumnIndex("dia")
+                val mesIndex = c.getColumnIndex("mes")
+                val anoIndex = c.getColumnIndex("ano")
+                val nomeIndex = c.getColumnIndex("nome")
+                val numeroIndex = c.getColumnIndex("numero")
+                val enderecoIndex = c.getColumnIndex("endereco")
+                val descricaoIndex = c.getColumnIndex("descricao")
+                val valorIndex = c.getColumnIndex("valor")
+                val booking_group_idIndex = c.getColumnIndex("booking_group_id")
+
+
                 val id = c.getInt(idIndex)
                 val nome = c.getString(nomeIndex)
                 val numero = c.getString(numeroIndex)
