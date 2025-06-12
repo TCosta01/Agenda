@@ -380,4 +380,66 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     }
 
+    fun deletaDiretoDaLista(nome: String, numero: String, endereco: String, descricao: String, valor: String) {
+        val db = writableDatabase
+
+        val nomeParaExcluir = "${nome}"
+        val numeroParaExcluir = "${numero}"
+        val enderecoParaExcluir = "${endereco}"
+        val descricaoParaExcluir = "${descricao}"
+        val valorParaExcluir = "${valor}"
+
+        val sql = "DELETE FROM Reservas WHERE nome = ? COLLATE NOCASE AND numero = ? COLLATE NOCASE AND endereco = ? COLLATE NOCASE AND descricao = ? COLLATE NOCASE AND valor = ?"
+        val args = arrayOf(nome, numero, endereco, descricao, valor)
+
+
+
+        db.execSQL(sql, args)
+
+        db.close()
+    }
+
+    fun atualizarDiretoDaListaa(nomeAntigo: String,numeroAntigo: String,enderecoAntigo: String,decricaoAntiga: String,valorAntigo: String, nomeNovo: String, numeroNovo: String, enderecoNovo: String, decricaoNovo: String,valorNovo: String){
+        val db = writableDatabase
+        //val sql = "UPDATE Reservas SET ano = ?, mes = ?, dia = ? WHERE nome = ? COLLATE NOCASE"
+       // val args = arrayOf(novoAno, novoMes, novoDia, nomeAntigo)
+
+        val sql = "UPDATE Reservas SET nome = ?, numero = ?, endereco = ?, descricao = ?, valor = ? WHERE nome = ? AND numero = ? AND endereco = ? AND descricao = ? AND valor = ?"
+         val args = arrayOf(nomeNovo, numeroNovo, enderecoNovo, decricaoNovo,valorNovo, nomeAntigo,numeroAntigo,enderecoAntigo,decricaoAntiga,valorAntigo)
+        db.execSQL(sql, args)
+
+        db.close()
+
+    }
+
+    fun listaTodosOsDiasReservados(nome: String, numero: String, endereco: String, descricao: String, valor: String): String {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT dia, mes, ano FROM Reservas WHERE nome = ? AND numero = ? AND endereco = ? AND descricao = ? AND valor = ?", arrayOf(nome, numero, endereco, descricao, valor))
+
+        val listaDatas = mutableListOf<String>()
+
+        if (cursor.moveToFirst()) {
+            do {
+                val dia = cursor.getString(cursor.getColumnIndexOrThrow("dia")).padStart(2, '0')
+                val mes = cursor.getString(cursor.getColumnIndexOrThrow("mes")).padStart(2, '0')
+                val ano = cursor.getString(cursor.getColumnIndexOrThrow("ano"))
+
+                val dataFormatada = "$dia/$mes/$ano"
+                listaDatas.add(dataFormatada)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+
+// Junta tudo em uma única string separada por ponto e vírgula
+        val todasAsDatas: String = listaDatas.joinToString(separator = ";")
+
+// Exemplo do resultado: "04/06/2021;14/10/2025"
+        Log.d("DatasTiago", todasAsDatas)
+
+        var a = todasAsDatas
+
+        return  a
+    }
 }
