@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookingActivity">
+    tools:context=".BookingActivity"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        >
 
         <TextView
             android:id="@+id/bookingDatesTextView"
@@ -18,7 +20,8 @@
             android:text="Datas da Reserva: "
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/azul_botao"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -92,7 +95,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Inserir Reserva"/>
+            android:text="Inserir Reserva"
+            android:backgroundTint="@color/verde_botao"/>
 
         <Button
             android:id="@+id/deleteButton"
@@ -100,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Excluir Reserva"
-            android:backgroundTint="@color/design_default_color_error"
+            android:backgroundTint="@color/laranja_botao"
             android:visibility="gone"/>
 
     </LinearLayout>

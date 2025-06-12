@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditarLista" >
+    tools:context=".EditarLista"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +30,12 @@
                     android:layout_marginBottom="16dp"
                     android:text="Datas da Reserva: "
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/azul_botao"
+
+
+
+                    />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -107,15 +113,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Atualizar Reserva" />
+                    android:text="Atualizar Reserva"
+                    android:backgroundTint="@color/verde_botao"/>
 
                 <Button
                     android:id="@+id/deleteButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:backgroundTint="@color/design_default_color_error"
-                    android:text="Excluir Reserva" />
+                    android:backgroundTint="@color/laranja_botao"
+                    android:text="Excluir Reserva"
+                    android:fontFamily="sans-serif"
+                    />
 
             </LinearLayout>
         </ScrollView>

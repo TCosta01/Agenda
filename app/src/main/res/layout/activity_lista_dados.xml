@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white"
+    tools:ignore="ExtraText">>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,25 +33,36 @@
             android:hint="Palavra Chave"
             android:minHeight="48dp" />
 
-        <EditText
-            android:id="@+id/editAno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="ANO" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editMes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="MÊS" />
+            <EditText
+                android:id="@+id/editAno"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="ANO"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/editMes"
+                android:layout_width="207dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+
+                android:hint="MÊS"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/buttonBuscar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buscar" />
+            android:text="Buscar"
+            android:backgroundTint="@color/azul_botao"
+            />
 
         <ListView
             android:id="@+id/list_view"

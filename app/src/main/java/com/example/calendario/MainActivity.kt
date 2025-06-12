@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity(), OnDateSelectedListener {
         val bookedDates = databaseHelper.getAllBookings()
         val calendarDays = bookedDates.map { CalendarDay.from(it.ano, it.mes - 1, it.dia) }
 
-        calendarView.addDecorator(EventDecorator(Color.parseColor("#FFBB86FC"), calendarDays))
+        calendarView.addDecorator(EventDecorator(Color.parseColor("#66AA78"), calendarDays))
     }
 
     private fun updateSelectedDatesText() {
