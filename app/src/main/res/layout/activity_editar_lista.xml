@@ -41,13 +41,15 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nome do Responsável">
+                    android:hint="Nome do Responsável"
+                    android:textColorHint="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/nameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -55,13 +57,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Número de Contato">
+                    android:hint="Número de Contato"
+                    android:textColorHint="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/numberEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="phone" />
+                        android:inputType="phone"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -69,13 +73,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Endereço">
+                    android:hint="Endereço"
+                    android:textColorHint="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/addressEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPostalAddress" />
+                        android:inputType="textPostalAddress"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -83,14 +89,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Descrição/Observações">
+                    android:hint="Descrição/Observações"
+                    android:textColorHint="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/descriptionEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
-                        android:lines="3" />
+                        android:lines="3"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -98,14 +106,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Valor da Reserva">
+                    android:hint="Valor da Reserva"
+                    android:textColorHint="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/valueEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
-                        android:lines="3" />
+                        android:lines="3"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
